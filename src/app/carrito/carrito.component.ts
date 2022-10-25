@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HeladosCartService } from '../helados-cart.service';
 import { Helado } from '../list/list';
@@ -13,10 +13,9 @@ export class CarritoComponent implements OnInit {
   total= 0;
   
   cartList$: Observable<Helado[]>; 
-
-  constructor(private cart: HeladosCartService){
+  constructor(private cart: HeladosCartService,
+  ){
     cart.cartList.subscribe(listaHelados  => {
-      console.log(listaHelados)
       this.total=0;
       let suma = 0;
       listaHelados.forEach((elementoHelado)=> {
@@ -32,6 +31,7 @@ export class CarritoComponent implements OnInit {
 
   eliminar(helado: Helado):void{
     this.cart.eliminar(helado);
+    this.cart.setStock(helado);
   }
 
 }
