@@ -1,0 +1,38 @@
+<table class="table" style="background-color:rgb(95, 30, 95);">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Cantidad</th>
+            <th>Compra</th>
+            <th>Informacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let helado of helados" [ngClass]="{'oferta': helado.oferta}">
+            <td>{{helado.nombre}}</td>
+            <td> <img class= "img-tumbnail" width="90"[src]="helado.imagen" [alt]="helado.nombre"> </td>
+            <td>{{helado.tipo |uppercase }}</td>
+            <td>{{helado.precio |currency}}</td>
+            <td><span *ngIf="helado.stock== 0" class="badge badge-danger">Sin stock</span></td>
+            <td>
+                <app-input-number [(cantidad)]= "helado.cantidad" [max]="helado.stock" (maxReacher)="maxReached($event)" *ngIf="helado.stock"></app-input-number>
+            </td>
+            <td>
+                <button class="btn btn-primary" (click)="addToCart(helado)">Comprar</button>
+            </td>
+            <td data-toggle="modal" data-target="#exampleModalCenter">
+                <div>
+                    <button data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary" (click)="openModal(helado)">Ver mas</button>
+                                
+                    <div *ngIf="modalSwitch == true">
+                        <app-ver-mas [detalleHelado] = "detalleHelado"></app-ver-mas>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

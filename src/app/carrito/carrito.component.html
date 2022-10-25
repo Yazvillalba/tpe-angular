@@ -1,0 +1,27 @@
+<div>
+    <table class="table" style="background-color:rgb(153, 48, 252);" *ngIf = "(cartList$ |async)?.length != 0"> 
+        <thead >
+            <tr>
+                <th>Tus compras</th>
+                <th>Unidades</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let helado of cartList$ | async" >
+                <td>   {{helado.nombre}} </td>
+                <td>{{helado.cantidad}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="eliminar(helado)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot >
+            <tr>
+                <td>Total</td>
+                <td></td>
+                <td>{{total}}</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
