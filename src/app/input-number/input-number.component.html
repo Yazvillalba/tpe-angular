@@ -1,11 +1,11 @@
 <div class="input-group">
     <div class="input-group">
         <div class="input-group-prepend">
-            <button class="btn btn-primary btn-sm" (click)="downQuantity()">-</button>
+            <button class="btn btn-primary btn-sm" (click)="menosCantidad()">-</button>
         </div>
-         <input type="text" class="text-center" [(ngModel)]="cantidad" (keyup)="changeQuantity($event)">
+         <input type="text" class="text-center" [(ngModel)]="cantidad" (keyup)="cambioCantidad($event)">
         <div class="input-group-append">
-            <button class="btn btn-primary btn-sm" (click)="upQuantity()">+</button>
+            <button class="btn btn-primary btn-sm" (click)="masCantidad()">+</button>
         </div>
     </div>
 </div>

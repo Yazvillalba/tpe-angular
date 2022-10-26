@@ -21,7 +21,7 @@ export class InputNumberComponent implements OnInit {
   
   ngOnInit(): void {
   }
-  upQuantity(): void{
+  masCantidad(): void{
     if(this.max > this.cantidad){
       this.cantidad++;
       this.cantidadChange.emit(this.cantidad);  
@@ -30,14 +30,14 @@ export class InputNumberComponent implements OnInit {
     }
     
   }
-  downQuantity(): void{
+  menosCantidad(): void{
     if(this.cantidad> 0){
       this.cantidad--;
       this.cantidadChange.emit(this.cantidad);
     }
   }
 
-  changeQuantity(event: any): void{
+  cambioCantidad(event: any): void{
     console.log(event);
     this.cantidadChange.emit(this.cantidad);
   }
